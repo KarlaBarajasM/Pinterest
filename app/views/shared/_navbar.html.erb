@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css">
 
-  <nav class="navbar navbar-default" style="margin-bottom: 0px;">
+  <nav class="navbar navbar-default" role:"navigation" style="margin-bottom: 0px;">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -10,22 +10,37 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= root_path%>">UTNG</a>
+        <a class="navbar-brand" href="<%= root_path %>"> UTNG</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="#">Nosotros <span class="sr-only">(current)</span></a></li>
-          <li><a href="<%= mypins_path %>">Mis Pins <span class="sr-only">(current)</span></a></li>
+          <li><a href="<%= mypins_path %>">Mis Pins</a></li>
           <li><a href="<%= pins_path %>">Pins</a></li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Dropdown
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Action</a></li>
             </ul>
+          </li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
         <% if current_user.nil? %>
-          <li><a href="<%=new_user_session_path %>">Ingreso</a></li>
+          <li><a href="<%= new_user_session_path %>">Ingreso</a></li>
           <li><a href="<%=new_user_registration_path %>">Registro</a></li>
           <% else %>
-          <li><a href="<%=destroy_user_session_path%>" data-method="DELETE">Salir</a></li>
+          <li>
+        <a href="<%= destroy_user_session_path %>" data-method="delete">Salir
+        </a>
+
+          <!--  <%= link_to 'Salir', destroy_user_session_path, :method => :get %>-->
+          </li>
+
          <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
